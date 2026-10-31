@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه لوازم خانگی و آرایشی</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- بخش احراز هویت (ورود / ثبت‌نام) -->
+    <div id="auth-container" class="auth-box">
+        <h2>ورود / ثبت‌نام در فروشگاه</h2>
+        
+        <!-- مرحله ۱: شماره موبایل -->
+        <div id="step-phone" class="auth-step">
+            <label for="phone-input">شماره موبایل خود را وارد کنید:</label>
+            <input type="text" id="phone-input" placeholder="مثال: 09123456789">
+            <button id="phone-next-btn" class="btn">ادامه</button>
+        </div>
+
+        <!-- مرحله ۲: رمز عبور (برای کاربران موجود یا جدید) -->
+        <div id="step-password" class="auth-step hidden">
+            <p id="password-prompt-text">رمز عبور خود را وارد کنید:</p>
+            <input type="password" id="password-input" placeholder="رمز عبور">
+            <button id="password-next-btn" class="btn">ادامه</button>
+        </div>
+
+        <!-- مرحله ۳: کد تایید و نام (برای ثبت‌نام جدید) -->
+        <div id="step-verify" class="auth-step hidden">
+            <p>کد تایید زیر را وارد کنید: <strong id="captcha-code" style="color: red; letter-spacing: 3px;"></strong></p>
+            <input type="text" id="captcha-input" placeholder="کد تایید">
+            <label for="name-input" style="margin-top: 10px; display: block;">نام و نام خانوادگی:</label>
+            <input type="text" id="name-input" placeholder="نام خود را وارد کنید">
+            <button id="register-btn" class="btn">تایید و ورود به سایت</button>
+        </div>
+    </div>
+
+    <!-- بدنه اصلی سایت (پس از ورود نمایان می‌شود) -->
+    <div id="main-site" class="hidden">
+        
+        <!-- هدر سایت -->
+        <header>
+            <div class="logo">فروشگاه لوازم خانگی و آرایشی</div>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="جستجوی محصول...">
+            </div>
+            <!-- منوی همبرگری (سه خط) -->
+            <div class="hamburger-menu" id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- منوی کشویی همبرگری -->
+            <div class="dropdown-menu hidden" id="hamburger-dropdown">
+                <a href="#" id="menu-home">صفحه اصلی</a>
+                <a href="#" id="menu-profile">پروفایل کاربری</a>
+                <a href="#" id="menu-cart">سبد خرید</a>
+            </div>
+        </header>
+
+        <!-- منوی افقی دسته‌بندی‌ها -->
+        <nav class="categories-bar">
+            <button class="cat-btn active" data-category="همه">همه</button>
+            <button class="cat-btn" data-category="تخفیف‌های ویژه">تخفیف‌های ویژه</button>
+            <button class="cat-btn" data-category="الکترونیک">الکترونیک</button>
+            <button class="cat-btn" data-category="پوشاک">پوشاک</button>
+            <button class="cat-btn" data-category="لوازم آرایشی">لوازم آرایشی</button>
+            <button class="cat-btn" data-category="لوازم خانگی">لوازم خانگی</button>
+            <button class="cat-btn" data-category="لوازم آشپزی">لوازم آشپزی</button>
+        </nav>
+
+        <!-- محتوای اصلی (صفحه محصولات) -->
+        <main id="home-page" class="page-section">
+            <!-- پنل مدیریت (فقط برای ادمین با شماره 09056274127 نمایان می‌شود) -->
+            <div id="admin-panel" class="admin-panel hidden">
+                <h3>پنل مدیریت (افزودن محصول جدید)</h3>
+                <input type="text" id="new-product-name" placeholder="نام محصول">
+                <input type="number" id="new-product-price" placeholder="قیمت (تومان)">
+                <input type="number" id="new-product-stock" placeholder="موجودی انبار">
+                <select id="new-product-category">
+                    <option value="تخفیف‌های ویژه">تخفیف‌های ویژه</option>
+                    <option value="الکترونیک">الکترونیک</option>
+                    <option value="پوشاک">پوشاک</option>
+                    <option value="لوازم آرایشی">لوازم آرایشی</option>
+                    <option value="لوازم خانگی">لوازم خانگی</option>
+                    <option value="لوازم آشپزی">لوازم آشپزی</option>
+                </select>
+                <input type="text" id="new-product-image" placeholder="آدرس تصویر (URL)">
+                <button id="add-product-btn" class="btn">افزودن محصول</button>
+            </div>
+
+            <h2>محصولات فروشگاه</h2>
+            <div id="products-grid" class="products-grid">
+                <!-- محصولات به صورت دینامیک بارگذاری می‌شوند -->
+            </div>
+        </main>
+
+        <!-- صفحه پروفایل کاربری -->
+        <section id="profile-page" class="page-section hidden">
+            <h2>پروفایل کاربری</h2>
+            <div class="profile-card">
+                <label>شماره موبایل (غیرقابل تغییر):</label>
+                <input type="text" id="profile-phone" disabled>
+
+                <label>نام و نام خانوادگی:</label>
+                <input type="text" id="profile-name">
+
+                <label>ایمیل:</label>
+                <input type="email" id="profile-email" placeholder="ایمیل خود را وارد کنید">
+
+                <label>رمز عبور جدید:</label>
+                <input type="password" id="profile-password" placeholder="رمز عبور جدید (در صورت تمایل)">
+
+                <label>آدرس:</label>
+                <textarea id="profile-address" placeholder="آدرس پستی..."></textarea>
+
+                <button id="save-profile-btn" class="btn">ذخیره تغییرات</button>
+            </div>
+        </section>
+
+        <!-- صفحه سبد خرید -->
+        <section id="cart-page" class="page-section hidden">
+            <h2>سبد خرید شما</h2>
+            <div id="cart-items-container">
+                <!-- اقلام سبد خرید اینجا قرار می‌گیرند -->
+            </div>
+            <div class="cart-summary">
+                <h3>مجموع کل: <span id="cart-total-price">0</span> تومان</h3>
+                <button id="checkout-btn" class="btn">تکمیل خرید و پرداخت</button>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
