@@ -265,3 +265,14 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+@media (max-width: 480px) {
+    .product-card {
+        flex: 1 1 100%; /* در موبایل‌های کوچک، هر محصول تمام عرض را بگیرد */
+    }
+    
+    /* اگر هدر یا منوی شما هم در موبایل بهم می‌ریزد، اینجا اصلاحش کنید */
+    header {
+        flex-direction: column; /* منو از حالت افقی به عمودی تبدیل شود */
+        text-align: center;
+    }
+}
