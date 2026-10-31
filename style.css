@@ -33,7 +33,7 @@ body {
 
 /* استایل بخش احراز هویت */
 .auth-box {
-    max-width: 400px;
+    max-width: 100%;
     margin: 80px auto;
     background: white;
     padding: 30px;
@@ -79,7 +79,7 @@ header {
 
 .search-box input {
     padding: 8px 15px;
-    width: 300px;
+    width: 100%;
     border-radius: 20px;
     border: none;
     outline: none;
