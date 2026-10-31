@@ -17,8 +17,8 @@ body {
 }
 
 .btn {
-    background-color: #7405ce;
-    color: white;
+    background-color: #055cce;
+    color: rgb(252, 243, 243);
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
@@ -28,7 +28,7 @@ body {
 }
 
 .btn:hover {
-    background-color: #681fad;
+    background-color: #1fad95;
 }
 
 /* استایل بخش احراز هویت */
